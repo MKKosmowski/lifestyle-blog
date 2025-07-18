@@ -8,49 +8,50 @@
     </div>
     <div class="container footer__container">
         <article>
-            <h4>Categories</h4>
+            <h4>Kategorie</h4>
             <ul>
-                <li><a href="">Food</a></li>
-                <li><a href="">Music</a></li>
-                <li><a href="">Art</a></li>
-                <li><a href="">Sience &amp; Technology</a></li>
-                <li><a href="">Wild Life</a></li>
-                <li><a href="">Travel</a></li>
+                <?php
+                $all_catgegories_query = "SELECT * FROM categories";
+                $all_catgegories_result = mysqli_query($connection, $all_catgegories_query);
+                ?>
+                <?php while ($category = mysqli_fetch_assoc($all_catgegories_result)): ?>
+                    <li><a href="<?= ROOT__URL ?>category-posts.php?id=<?= $category['id'] ?>"><?= $category['title'] ?></a></li>
+                <?php endwhile; ?>
             </ul>
         </article>
         <article>
-            <h4>Support</h4>
+            <h4>Wsparcie</h4>
             <ul>
-                <li><a href="">Online Support</a></li>
-                <li><a href="">Call Numbers</a></li>
-                <li><a href="">Emails</a></li>
-                <li><a href="">Social Supports</a></li>
-                <li><a href="">Location</a></li>
+                <li><a href="">Wsparcie&nbsp;online</a></li>
+                <li><a href="">Numery&nbsp;telefonów</a></li>
+                <li><a href="">E-maile</a></li>
+                <li><a href="">Wsparcie&nbsp;społeczności</a></li>
+                <li><a href="">Lokalizacja</a></li>
             </ul>
         </article>
         <article>
             <h4>Blog</h4>
             <ul>
-                <li><a href="">Safety</a></li>
-                <li><a href="">Repeair</a></li>
-                <li><a href="">Recent</a></li>
-                <li><a href="">Popular</a></li>
-                <li><a href="">Categories</a></li>
+                <li><a href="">Bezpieczeństwo</a></li>
+                <li><a href="">Naprawy</a></li>
+                <li><a href="">Najnowsze</a></li>
+                <li><a href="">Popularne</a></li>
+                <li><a href="">Kategorie</a></li>
             </ul>
         </article>
         <article>
-            <h4>Permalinks</h4>
+            <h4>Stałe&nbsp;linki</h4>
             <ul>
-                <li><a href="">Home</a></li>
-                <li><a href="">Blog</a></li>
-                <li><a href="">About</a></li>
-                <li><a href="">Services</a></li>
-                <li><a href="">Contact</a></li>
+                <li><a href="<?= ROOT__URL ?>">Strona&nbsp;główna</a></li>
+                <li><a href="<?= ROOT__URL ?>blog.php">Blog</a></li>
+                <li><a href="<?= ROOT__URL ?>about.php">O&nbsp;nas</a></li>
+                <li><a href="<?= ROOT__URL ?>services.php">Usługi</a></li>
+                <li><a href="<?= ROOT__URL ?>contact.php">Kontakt</a></li>
             </ul>
         </article>
     </div>
     <div class="footer__copyright">
-        <small>Copyright &copy; Blog</small>
+        <small>&copy; Blog — wszelkie prawa zastrzeżone</small>
     </div>
 </footer>
 

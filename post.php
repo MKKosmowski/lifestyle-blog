@@ -30,9 +30,9 @@ if(isset($_GET['id'])) {
                 <img src="./images/<?= $author['avatar'] ?>">
             </div>
             <div class="post__author-info">
-                <h5>By: <?= $author['firstname']." ".$author['lastname'] ?></h5>
+                <h5>Autor: <?= $author['firstname']." ".$author['lastname'] ?></h5>
                 <small>
-                    <?= date("M d, Y - H:i", strtotime($post['date_time'])) ?>
+                    <?= date("d.m.Y H:i", strtotime($post['date_time'])) ?>
                 </small>
             </div>
         </div>

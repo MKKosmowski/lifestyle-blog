@@ -15,7 +15,7 @@
 
 <section class="form__section">
     <section class="container form__section-container">
-        <h2>Add Post</h2>
+        <h2>Dodaj post</h2>
 
         <?php if(isset($_SESSION['add-post'])): ?>
             <div class="alert__message error">
@@ -27,7 +27,7 @@
         <?php endif ?>
 
         <form action="<?= ROOT__URL ?>admin/add-post-logic.php" enctype="multipart/form-data" method="post">
-            <input type="text" value="<?= $title ?>" name="title" placeholder="Title">
+            <input type="text" value="<?= $title ?>" name="title" placeholder="Tytuł">
 
             <select name="category">
                 <?php while($category = mysqli_fetch_assoc($categories)): ?>
@@ -36,21 +36,21 @@
             </select>
 
 
-            <textarea rows="10" name="body" placeholder="Body"><?= $body ?></textarea>
+            <textarea rows="10" name="body" placeholder="Treść"><?= $body ?></textarea>
 
             <?php if(isset($_SESSION['user_is_admin'])): ?>
                 <div class="form__control inline">
                     <input type="checkbox" name="is_featured" value="1" id="is_featured" checked>
-                    <label for="is_featured" >Featured</label>
+                    <label for="is_featured" >Wyróżniony</label>
                 </div>
             <?php endif ?>
 
             <div class="form__control">
-                <label for="thumbnail">Add Thumbnail</label>
+                <label for="thumbnail">Dodaj miniaturę</label>
                 <input type="file" name="thumbnail" id="thumbnail">
             </div>
 
-            <button type="submit" name="submit" class="btn">Add Post</button>
+            <button type="submit" name="submit" class="btn">Dodaj post</button>
         </form>
     </section>
 </section>

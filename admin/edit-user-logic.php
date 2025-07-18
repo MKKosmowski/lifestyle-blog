@@ -10,16 +10,16 @@ if(isset($_POST['submit'])) {
     
     // check for valid input
     if(!$firstname || !$lastname) {
-        $_SESSION['edit-user'] = "Invalid firstname or/and lastname";
+        $_SESSION['edit-user'] = "Nieprawidłowe imię i/lub nazwisko";
     } else {
         // update user
         $query = "UPDATE users SET firstname='$firstname', lastname='$lastname', is_admin=$is_admin WHERE id=$id LIMIT 1";
         $result = mysqli_query($connection, $query);
 
         if(mysqli_errno($connection)) {
-            $_SESSION['edit-user'] = "Failed to update user";
+            $_SESSION['edit-user'] = "Nie udało się zaktualizować użytkownika";
         } else {
-            $_SESSION['edit-user-success'] = "User $firstname $lastname updated successfully";
+            $_SESSION['edit-user-success'] = "Użytkownik $firstname $lastname zaktualizowany pomyślnie";
         }
     }
 }

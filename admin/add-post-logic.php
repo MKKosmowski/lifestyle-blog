@@ -14,13 +14,13 @@ if(isset($_POST['submit'])) {
 
     // validate form data
     if(!$title) {
-        $_SESSION['add-post'] = "Please check the post title";
+        $_SESSION['add-post'] = "Sprawdź tytuł posta";
     } else if(!$category_id) {
-        $_SESSION['add-post'] = "Please check the post category";
+        $_SESSION['add-post'] = "Wybierz kategorię posta";
     } else if(!$body) {
-        $_SESSION['add-post'] = "Please check the post body";
+        $_SESSION['add-post'] = "Treść posta jest wymagana";
     } else if(!$thumbnail['name']) {
-        $_SESSION['add-post'] = "Choose post thumbnail";
+        $_SESSION['add-post'] = "Wybierz miniaturę posta";
     } else {
         // work on thumbnail
         // reneme the image
@@ -39,10 +39,10 @@ if(isset($_POST['submit'])) {
                 // upload thumbnail
                 move_uploaded_file($thumbnail_tmp_name, $thumbnail_destination_path);
             } else {
-                $_SESSION['add-post'] = "File size too big, should be less than 2mb";
+                $_SESSION['add-post'] = "Plik za duży (maks 2 MB)";
             }
         } else {
-            $_SESSION['add-post'] = "File should be png, jpg or jpeg";
+            $_SESSION['add-post'] = "Plik musi być png, jpg lub jpeg";
         }
     }
 
@@ -63,11 +63,11 @@ if(isset($_POST['submit'])) {
         $result = mysqli_query($connection, $query);
 
         if(!mysqli_errno($connection)) {
-            $_SESSION['add-post-success'] = "New post added successfully";
+            $_SESSION['add-post-success'] = "Nowy post został dodany";
             header('location: '.ROOT__URL.'admin/');
             die();
         } else {
-            $_SESSION['add-post'] = "Couldn't add new post";
+            $_SESSION['add-post'] = "Nie udało się dodać posta";
         }
     }
 }

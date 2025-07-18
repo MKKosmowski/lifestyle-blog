@@ -8,7 +8,7 @@
 
 <section class="form__section">
     <section class="container form__section-container">
-        <h2>Add Category</h2>
+        <h2>Dodaj kategorię</h2>
 
         <?php if(isset($_SESSION['add-category'])): ?>
             <div class="alert__message error">
@@ -19,10 +19,10 @@
         <?php endif ?>
 
         <form action="<?= ROOT__URL ?>admin/add-category-logic.php" method="POST">
-            <input type="text" name="title" value="<?= $title ?>" placeholder="Title">
-            <textarea rows="4" name="description" placeholder="Description"><?= $description ?></textarea>
+            <input type="text" name="title" value="<?= $title ?>" placeholder="Tytuł">
+            <textarea rows="4" name="description" placeholder="Opis"><?= $description ?></textarea>
 
-            <button type="submit" name="submit" class="btn">Add Category</button>
+            <button type="submit" name="submit" class="btn">Dodaj kategorię</button>
         </form>
     </section>
 </section>

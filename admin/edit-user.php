@@ -14,23 +14,23 @@
 
 <section class="form__section">
     <section class="container form__section-container">
-        <h2>Edit User</h2>
+        <h2>Edytuj użytkownika</h2>
 
         <form action="<?= ROOT__URL ?>admin/edit-user-logic.php" method="post">
             <input type="hidden" value="<?= $user['id'] ?>" name="id">
-            <input type="text" value="<?= $user['firstname'] ?>" name="firstname" placeholder="First Name">
-            <input type="text" value="<?= $user['lastname'] ?>" name="lastname" placeholder="Last Name">
+            <input type="text" value="<?= $user['firstname'] ?>" name="firstname" placeholder="Imię">
+            <input type="text" value="<?= $user['lastname'] ?>" name="lastname" placeholder="Nazwisko">
  
             <div class="form__control">
-                <p>User Role</p>
+                <p>Rola użytkownika</p>
                 <select name="userrole">
-                    <option value="0">Author</option>
+                    <option value="0">Autor</option>
                     <option value="1">Admin</option>
                 </select>
             </div>
 
 
-            <button type="submit" name="submit" class="btn">Update User</button>
+            <button type="submit" name="submit" class="btn">Zaktualizuj użytkownika</button>
         </form>
     </section>
 </section>

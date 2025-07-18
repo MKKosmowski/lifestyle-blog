@@ -13,21 +13,21 @@ if (isset($_POST['submit'])) {
 
     // validate input values
     if(!$firstname) {
-        $_SESSION['signup'] = "Please enter your First Name";
+        $_SESSION['signup'] = "Wprowadź imię";
     } else if (!$lastname) {
-        $_SESSION['signup'] = "Please enter your Last Name";
+        $_SESSION['signup'] = "Wprowadź nazwisko";
     } else if (!$username) {
-        $_SESSION['signup'] = "Please enter your Username Name";
+        $_SESSION['signup'] = "Wprowadź nazwę użytkownika";
     } else if (!$email) {
-        $_SESSION['signup'] = "Please enter a valid email";
+        $_SESSION['signup'] = "Wprowadź poprawny email";
     } else if (strlen($createpassword) < 8 || strlen($confirmpassword) < 8) {
-        $_SESSION['signup'] = "Password should be 8+ characters";
+        $_SESSION['signup'] = "Hasło powinno mieć co najmniej 8 znaków";
     } else if (!$avatar['name']) {
-        $_SESSION['signup'] = "Please add avatar";
+        $_SESSION['signup'] = "Dodaj avatar";
     } else {
         // check if password don't match
         if($createpassword !== $confirmpassword) {
-            $_SESSION['signup'] = "Passwords do not match";
+            $_SESSION['signup'] = "Hasła nie są zgodne";
         } else {
             // hash password
             $hashed_password = password_hash($createpassword, PASSWORD_DEFAULT);
@@ -36,7 +36,7 @@ if (isset($_POST['submit'])) {
             $user_check_query = "SELECT * FROM users WHERE username='$username' OR email='$email'";
             $user_check_result = mysqli_query($connection, $user_check_query);
             if(mysqli_num_rows($user_check_result) > 0) {
-                $_SESSION['signup'] = "Username of Email already exist";
+                $_SESSION['signup'] = "Nazwa użytkownika lub email już istnieje";
             } else {
                 // work on avatar
                 // rename avatar (random)
@@ -55,10 +55,10 @@ if (isset($_POST['submit'])) {
                         // upload avatar
                         move_uploaded_file($avatar_tmp_name, $avatar_destination_path);
                     } else {
-                        $_SESSION['signup'] = "File size is too big. Should be less than 1mb";
+                        $_SESSION['signup'] = "Plik za duży (maks 1 MB)";
                     }
                 } else {
-                    $_SESSION['signup'] = "File sould be png, jpg or jpeg";
+                    $_SESSION['signup'] = "Plik musi być png, jpg lub jpeg";
                 }
             }
         }
@@ -77,7 +77,7 @@ if (isset($_POST['submit'])) {
 
         if(!mysqli_errno($connection)) {
             // redirect to login page with succes message
-            $_SESSION['signup-success'] = "Registration successful. Please log in";
+            $_SESSION['signup-success'] = "Rejestracja zakończona sukcesem. Zaloguj się";
             header('location: '.ROOT__URL.'signin.php');
             die();
         }

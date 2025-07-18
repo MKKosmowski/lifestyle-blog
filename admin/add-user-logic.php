@@ -14,21 +14,21 @@ if (isset($_POST['submit'])) {
 
     // validate input values
     if(!$firstname) {
-        $_SESSION['add-user'] = "Please enter your First Name";
+        $_SESSION['add-user'] = "Wprowadź imię";
     } else if (!$lastname) {
-        $_SESSION['add-user'] = "Please enter your Last Name";
+        $_SESSION['add-user'] = "Wprowadź nazwisko";
     } else if (!$username) {
-        $_SESSION['add-user'] = "Please enter your Username Name";
+        $_SESSION['add-user'] = "Wprowadź nazwę użytkownika";
     } else if (!$email) {
-        $_SESSION['add-user'] = "Please enter a valid email";
+        $_SESSION['add-user'] = "Wprowadź poprawny email";
     } else if (strlen($createpassword) < 8 || strlen($confirmpassword) < 8) {
-        $_SESSION['add-user'] = "Password should be 8+ characters";
+        $_SESSION['add-user'] = "Hasło powinno mieć co najmniej 8 znaków";
     } else if (!$avatar['name']) {
-        $_SESSION['add-user'] = "Please add avatar";
+        $_SESSION['add-user'] = "Dodaj avatar";
     } else {
         // check if password don't match
         if($createpassword !== $confirmpassword) {
-            $_SESSION['signup'] = "Passwords do not match";
+            $_SESSION['signup'] = "Hasła nie są zgodne";
         } else {
             // hash password
             $hashed_password = password_hash($createpassword, PASSWORD_DEFAULT);
@@ -37,7 +37,7 @@ if (isset($_POST['submit'])) {
             $user_check_query = "SELECT * FROM users WHERE username='$username' OR email='$email'";
             $user_check_result = mysqli_query($connection, $user_check_query);
             if(mysqli_num_rows($user_check_result) > 0) {
-                $_SESSION['add-user'] = "Username of Email already exist";
+                $_SESSION['add-user'] = "Nazwa użytkownika lub email już istnieje";
             } else {
                 // work on avatar
                 // rename avatar (random)
@@ -56,10 +56,10 @@ if (isset($_POST['submit'])) {
                         // upload avatar
                         move_uploaded_file($avatar_tmp_name, $avatar_destination_path);
                     } else {
-                        $_SESSION['add-user'] = "File size is too big. Should be less than 1mb";
+                        $_SESSION['add-user'] = "Plik za duży (maks 1 MB)";
                     }
                 } else {
-                    $_SESSION['add-user'] = "File sould be png, jpg or jpeg";
+                    $_SESSION['add-user'] = "Plik musi być png, jpg lub jpeg";
                 }
             }
         }
@@ -78,7 +78,7 @@ if (isset($_POST['submit'])) {
 
         if(!mysqli_errno($connection)) {
             // redirect to login page with succes message
-            $_SESSION['add-user-success'] = "New user $firstname $lastname added successfully";
+            $_SESSION['add-user-success'] = "Nowy użytkownik $firstname $lastname został dodany";
             header('location: '.ROOT__URL.'admin/manage-users.php');
             die();
         }

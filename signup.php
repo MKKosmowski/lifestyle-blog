@@ -13,7 +13,8 @@ unset($_SESSION['signup-data']);
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,38 +28,40 @@ unset($_SESSION['signup-data']);
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
+
 <body>
     <section class="form__section">
         <section class="container form__section-container">
-            <h2>Sign Up</h2>
+            <h2>Zarejestruj się</h2>
 
-            <?php if(isset($_SESSION['signup'])): ?>
+            <?php if (isset($_SESSION['signup'])): ?>
                 <div class="alert__message error">
                     <p>
                         <?= $_SESSION['signup'];
-                        unset($_SESSION['signup']); 
+                        unset($_SESSION['signup']);
                         ?>
                     </p>
                 </div>
             <?php endif ?>
 
             <form action="<?= ROOT__URL ?>signup-logic.php" enctype="multipart/form-data" method="post">
-                <input type="text" name="firstname" value="<?= $firstname ?>" placeholder="First Name">
-                <input type="text" name="lastname" value="<?= $lastname ?>" placeholder="Last Name">
-                <input type="text" name="username" value="<?= $username ?>" placeholder="Username">
+                <input type="text" name="firstname" value="<?= $firstname ?>" placeholder="Imię">
+                <input type="text" name="lastname" value="<?= $lastname ?>" placeholder="Nazwisko">
+                <input type="text" name="username" value="<?= $username ?>" placeholder="Nazwa użytkownika">
                 <input type="email" name="email" value="<?= $email ?>" placeholder="Email">
-                <input type="password" name="createpassword" value="<?= $createpassword ?>" placeholder="Create Password">
-                <input type="password" name="confirmpassword" value="<?= $confirmpassword ?>" placeholder="Confirm Password">
+                <input type="password" name="createpassword" value="<?= $createpassword ?>" placeholder="Hasło">
+                <input type="password" name="confirmpassword" value="<?= $confirmpassword ?>" placeholder="Potwierdź hasło">
 
                 <div class="form__control">
-                    <label for="avatar"></label>
+                    <label for="avatar">Dodaj zdjęcie profilowe</label>
                     <input type="file" name="avatar" id="avatar">
                 </div>
 
-                <button type="submit" name="submit" class="btn">Sign Up</button>
-                <small>Already have an account? <a href="signin.php">Sign In</a></small>
+                <button type="submit" name="submit" class="btn">Zarejestruj się</button>
+                <small>Masz już konto? <a href="signin.php">Zaloguj się</a></small>
             </form>
         </section>
     </section>
 </body>
+
 </html>

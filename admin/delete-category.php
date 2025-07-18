@@ -12,7 +12,7 @@ if(isset($_GET['id'])) {
         // delete category
         $query = "DELETE FROM categories WHERE id=$id LIMIT 1";
         $result = mysqli_query($connection, $query);
-        $_SESSION['delete-category-success'] = "Category deleted successfully";
+        $_SESSION['delete-category-success'] = "Kategoria usunięta pomyślnie";
     }
 }
 

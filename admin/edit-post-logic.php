@@ -16,11 +16,11 @@ if(isset($_POST['submit'])) {
 
     // check and validate input values
     if(!$title) {
-        $_SESSION['edit-post'] = "Couldn't update post. Invalid form data on edit post page.";
+        $_SESSION['edit-post'] = "Nie można zaktualizować posta. Nieprawidłowe dane formularza.";
     } else if(!$category_id) {
-        $_SESSION['edit-post'] = "Couldn't update post. Invalid form data on edit post page.";
+        $_SESSION['edit-post'] = "Nie można zaktualizować posta. Nieprawidłowe dane formularza.";
     } else if(!$body) {
-        $_SESSION['edit-post'] = "Couldn't update post. Invalid form data on edit post page.";
+        $_SESSION['edit-post'] = "Nie można zaktualizować posta. Nieprawidłowe dane formularza.";
     } else {
         // delete existing thumbnail if new thumbnail is avaiable
         if($thumbnail['name']) {
@@ -46,10 +46,10 @@ if(isset($_POST['submit'])) {
                     // upload image
                     move_uploaded_file($thumbnail_tmp_name, $thumbnail_destination_path);
                 } else {
-                    $_SESSION['edit-post'] = "Couldn't update post. Thumbnail size too big, should be less than 2mb";
+                    $_SESSION['edit-post'] = "Nie można zaktualizować posta. Miniatura za duża (maks 2 MB)";
                 }
             } else {
-                $_SESSION['edit-post'] = "Couldn't update post. Thumbnail should be png, jpe or jpeg.";
+                $_SESSION['edit-post'] = "Nie można zaktualizować posta. Miniatura musi być png, jpg lub jpeg.";
             }
         }
     }
@@ -73,7 +73,7 @@ if(isset($_POST['submit'])) {
     }
 
     if(!mysqli_errno($connection)) {
-        $_SESSION['edit-post-success'] = "Post updatet successfully";
+        $_SESSION['edit-post-success'] = "Post zaktualizowany pomyślnie";
     }
 }
 

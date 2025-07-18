@@ -10,12 +10,12 @@ if (isset($_SESSION['user-id'])) {
 }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PHP &amp; MySQL Blog Application with Admin Panel</title>
+    <title>Aplikacja Blogowa PHP &amp; MySQL z Panelem Administracyjnym</title>
     <!-- CUSTOM STYLESHEET -->
     <link rel="stylesheet" href="<?= ROOT__URL  ?>css/style.css">
     <!-- ICONSCOUT CDN -->
@@ -32,21 +32,21 @@ if (isset($_SESSION['user-id'])) {
             <a href="<?= ROOT__URL  ?>" class="nav__logo">Blog</a>
             <ul class="nav__items">
                 <li><a href="<?= ROOT__URL  ?>blog.php">Blog</a></li>
-                <li><a href="<?= ROOT__URL  ?>about.php">About</a></li>
-                <li><a href="<?= ROOT__URL  ?>services.php">Services</a></li>
-                <li><a href="<?= ROOT__URL  ?>contact.php">Contact</a></li>
+                <li><a href="<?= ROOT__URL  ?>about.php">O nas</a></li>
+                <li><a href="<?= ROOT__URL  ?>services.php">Usługi</a></li>
+                <li><a href="<?= ROOT__URL  ?>contact.php">Kontakt</a></li>
                 <?php if (isset($_SESSION['user-id'])): ?>
                     <li class="nav__profile">
                         <div class="avatar">
                             <img src="<?= ROOT__URL . 'images/' . $avatar['avatar'] ?>">
                         </div>
                         <ul>
-                            <li><a href="<?= ROOT__URL  ?>admin/index.php">Dashbord</a></li>
-                            <li><a href="<?= ROOT__URL  ?>logout.php">Logout</a></li>
+                            <li><a href="<?= ROOT__URL  ?>admin/index.php">Panel</a></li>
+                            <li><a href="<?= ROOT__URL  ?>logout.php">Wyloguj</a></li>
                         </ul>
                     </li>
                 <?php else: ?>
-                    <li><a href="<?= ROOT__URL  ?>signin.php">Signin</a></li>
+                    <li><a href="<?= ROOT__URL  ?>signin.php">Zaloguj się</a></li>
                 <?php endif ?>
             </ul>
 

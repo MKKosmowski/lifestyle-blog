@@ -7,9 +7,9 @@ if(isset($_POST['submit'])) {
     $description = filter_var($_POST['description'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
     if(!$title) {
-        $_SESSION['add-category'] = "Enter title";
+        $_SESSION['add-category'] = "Wprowadź tytuł";
     } else if(!$description) {
-        $_SESSION['add-category'] = "Enter description";
+        $_SESSION['add-category'] = "Wprowadź opis";
     }
 
     // redirect back to add category with form data if there was invalid input
@@ -23,11 +23,11 @@ if(isset($_POST['submit'])) {
         $result = mysqli_query($connection, $query);
 
         if(mysqli_errno($connection)) {
-            $_SESSION['add-category'] = "Couldn't add category";
+            $_SESSION['add-category'] = "Nie można dodać kategorii";
             header('location: '.ROOT__URL.'admin/add-category.php');
             die();
         } else {
-            $_SESSION['add-category-succes'] = "Category $title added successfully";
+            $_SESSION['add-category-succes'] = "Kategoria $title dodana pomyślnie";
             header('location: '.ROOT__URL.'admin/manage-categories.php');
             die();
         }

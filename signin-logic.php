@@ -7,9 +7,9 @@ if(isset($_POST['submit'])) {
     $password = filter_var($_POST['password'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
     if(!$username_email) {
-        $_SESSION['signin'] = "Username or email required";
+        $_SESSION['signin'] = "Wymagana nazwa użytkownika lub email";
     } else if(!$password) {
-        $_SESSION['signin'] = "Password required";
+        $_SESSION['signin'] = "Wymagane hasło";
     } else {
         // fetch user form database
         $fetch_user_query = "SELECT * FROM users WHERE username='$username_email' OR email='$username_email'";
@@ -33,10 +33,10 @@ if(isset($_POST['submit'])) {
                 // log user in
                 header('location: '.ROOT__URL.'admin/');
             } else {
-                $_SESSION['signin'] = "Password does not match";
+                $_SESSION['signin'] = "Niepoprawne hasło";
             }
         } else {
-            $_SESSION['signin'] = "User not found";
+            $_SESSION['signin'] = "Nie znaleziono użytkownika";
         }
     }
 

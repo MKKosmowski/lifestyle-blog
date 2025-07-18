@@ -10,9 +10,9 @@ $posts = mysqli_query($connection, $query);
     <form action="<?= ROOT__URL ?>search.php" class="container search__bar-container" method="get">
         <div>
             <i class="uil uil-search"></i>
-            <input type="search" name="search" placeholder="Search">
+            <input type="search" name="search" placeholder="Szukaj">
         </div>
-        <button type="submit" name="submit" class="btn">Go</button>
+        <button type="submit" name="submit" class="btn">Szukaj</button>
     </form>
 </section>
 
@@ -50,9 +50,9 @@ $posts = mysqli_query($connection, $query);
                             <img src="./images/<?= $author['avatar'] ?>">
                         </div>
                         <div class="post__author-info">
-                            <h5>By: <?= $author['firstname']." ".$author['lastname'] ?></h5>
+                            <h5>Autor: <?= $author['firstname']." ".$author['lastname'] ?></h5>
                             <small>
-                                <?= date("M d, Y - H:i", strtotime($post['date_time'])) ?>
+                                <?= date("d.m.Y H:i", strtotime($post['date_time'])) ?>
                             </small>
                         </div>
                     </div>

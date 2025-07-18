@@ -8,15 +8,15 @@ if(isset($_POST['submit'])) {
 
     // validate input
     if(!$title || !$description) {
-        $_SESSION['edit-category'] = "Invalid form input on category page";
+        $_SESSION['edit-category'] = "Nieprawidłowe dane formularza dla kategorii";
     } else {
         $query = "UPDATE categories SET title='$title', description='$description' WHERE id=$id LIMIT 1";
         $result = mysqli_query($connection, $query);
 
         if(mysqli_errno($connection)) {
-            $_SESSION['edit-category'] = "Couldn't update category";
+            $_SESSION['edit-category'] = "Nie można zaktualizować kategorii";
         } else {
-            $_SESSION['edit-category-success'] = "Cateogry $title updated successfully";
+            $_SESSION['edit-category-success'] = "Kategoria $title zaktualizowana pomyślnie";
         }
     }
 }

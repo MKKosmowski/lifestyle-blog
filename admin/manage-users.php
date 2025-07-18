@@ -63,54 +63,54 @@
                 <li>
                     <a href="add-post.php">
                         <i class="uil uil-pen"></i>
-                        <h5>Add Post</h5>
+                        <h5>Dodaj post</h5>
                     </a>
                 </li>
                 <li>
                     <a href="index.php">
                         <i class="uil uil-postcard"></i>
-                        <h5>Manage Posts</h5>
+                        <h5>Zarządzaj postami</h5>
                     </a>
                 </li>
             <?php if(isset($_SESSION['user_is_admin'])): ?>
                 <li>
                     <a href="add-user.php">
                         <i class="uil uil-user-plus"></i>
-                        <h5>Add User</h5>
+                        <h5>Dodaj użytkownika</h5>
                     </a>
                 </li>
                 <li>
                     <a href="manage-users.php" class="active">
                         <i class="uil uil-users-alt"></i>
-                        <h5>Manage Users</h5>
+                        <h5>Zarządzaj użytkownikami</h5>
                     </a>
                 </li>
                 <li>
                     <a href="add-category.php">
                         <i class="uil uil-edit"></i>
-                        <h5>Add Category</h5>
+                        <h5>Dodaj kategorię</h5>
                     </a>
                 </li>
                 <li>
                     <a href="manage-categories.php">
                         <i class="uil uil-list-ul"></i>
-                        <h5>Manage Categories</h5>
+                        <h5>Zarządzaj kategoriami</h5>
                     </a>
                 </li>
             <?php endif ?>
             </ul>
         </aside>
         <main>
-            <h2>Manage Users</h2>
+            <h2>Zarządzaj użytkownikami</h2>
             <?php if(mysqli_num_rows($users) > 0): ?>
             <table>
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Username</th>
-                        <th>Edit</th>
-                        <th>Delete</th>
-                        <th>Admin</th>
+                        <th>Imię i nazwisko</th>
+                        <th>Nazwa użytkownika</th>
+                        <th>Edytuj</th>
+                        <th>Usuń</th>
+                        <th>Administrator</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -118,15 +118,15 @@
                         <tr>
                             <td><?= "{$user['firstname']}"." "."{$user['lastname']}"  ?></td>
                             <td><?= $user['username'] ?></td>
-                            <td><a href="<?= ROOT__URL ?>admin/edit-user.php?id=<?= $user['id'] ?>" class="btn sm">Edit</a></td>
-                            <td><a href="<?= ROOT__URL ?>admin/delete-user.php?id=<?= $user['id'] ?>" class="btn sm danger">Delete</a></td>
-                            <td><?= $user['is_admin'] ? 'Yes' : 'No' ?></td>
+                            <td><a href="<?= ROOT__URL ?>admin/edit-user.php?id=<?= $user['id'] ?>" class="btn sm">Edytuj</a></td>
+                            <td><a href="<?= ROOT__URL ?>admin/delete-user.php?id=<?= $user['id'] ?>" class="btn sm danger">Usuń</a></td>
+                            <td><?= $user['is_admin'] ? 'Tak' : 'Nie' ?></td>
                         </tr>
                     <?php endwhile ?>
                 </tbody>
             </table>
             <?php else: ?>
-                <div class="alert__message error"><?= "No users found" ?></div>
+                <div class="alert__message error"><?= "Brak użytkowników" ?></div>
             <?php endif ?>
         </main>
     </div>
