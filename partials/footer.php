@@ -50,10 +50,11 @@
         </article>
     </div>
     <div class="footer__copyright">
-        <small>Copyright &copy; PYSZNY ZAKĄTEK</small>
+        <small>Copyright &copy; Blog</small>
     </div>
 </footer>
 
 <script src="<?= ROOT__URL  ?>js/main.js"></script>
 </body>
+
 </html>
